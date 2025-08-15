@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerTarget = document.getElementById('shared-header');
   if (headerTarget) {
     headerTarget.innerHTML = `
-      <header class="yhz-header">
-        <nav class="yhz-nav">
-          <a class="brand" href="/">Help Home</a>
-          <a class="button" href="${MAIN_APP_URL}">← Back to App</a>
-        </nav>
-      </header>
+// inside site.js where you set headerTarget.innerHTML = `
+<header class="yhz-header">
+  <nav class="yhz-nav">
+    <a class="btn btn-ghost" href="/">Help Home</a>
+    <a class="btn" href="${MAIN_APP_URL}">← Back to App</a>
+  </nav>
+</header>
+`
     `;
   }
 
