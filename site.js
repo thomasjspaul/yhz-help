@@ -14,3 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
       </header>
     `;
 });
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const MAIN = 'https://yhz.app'; // or https://yhz.app
+  document.querySelectorAll('.yhz-footer a[href^="/"]').forEach(a => {
+    a.href = MAIN + a.getAttribute('href');
+  });
+});
+</script>
