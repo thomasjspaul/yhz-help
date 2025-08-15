@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: thomasjspaul/yhz-help
+  branch: main
+  base_url: https://auth.help.yhc.app
+  auth_endpoint: /auth
+  commit_messages:
+    create: "docs(help): create {{slug}}"
+    update: "docs(help): update {{slug}}"
+    delete: "docs(help): delete {{slug}}"
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "help"
+    label: "Help"
+    label_singular: "Article"
+    folder: "content/help"
+    create: true
+    format: "frontmatter"
+    extension: "md"
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "lowercase-with-dashes" }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "manifest"
+    label: "Help Index"
+    files:
+      - label: "Help List"
+        name: "help_index"
+        file: "content/help/_index.json"
+        fields:
+          - label: "Articles"
+            name: "articles"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text", required: false }
