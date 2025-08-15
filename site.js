@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     headerTarget.innerHTML = `
       <header class="yhz-header">
         <nav class="yhz-nav">
-          <a class="btn btn-ghost" href="/">Help Home</a>
+          <a class="btn btn-ghost" href="/">YHZ Crew Alerts Help Home</a>
           <a class="btn" href="${MAIN_APP_URL}">← Back to YHZ Crew Alerts</a>
         </nav>
       </header>
