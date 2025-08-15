@@ -69,3 +69,40 @@
 .page > h1{ margin:0 0 .5rem; }
 .page > p{ margin:.25rem 0 1rem; color:var(--muted); }
 
+/* ——— Help index UI ——— */
+:root { --ink:#0f172a; --muted:#6b7280; --brand:#2563eb; --ring:rgba(37,99,235,.25); }
+
+.toolbar {
+  display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+  margin:.5rem 0 1rem;
+}
+.search { flex:1; min-width:220px; }
+.search input {
+  width:100%; padding:.6rem .8rem; border:1px solid #e5e7eb; border-radius:10px;
+  font-size:1rem; background:#fff; color:var(--ink);
+}
+.search input:focus { outline:none; box-shadow:0 0 0 3px var(--ring); }
+
+.chips { display:flex; gap:.5rem; flex-wrap:wrap; }
+.chip {
+  border:1px solid #e5e7eb; background:#fff; color:var(--ink);
+  border-radius:999px; padding:.35rem .75rem; cursor:pointer; font-weight:600;
+}
+.chip.active { border-color:var(--brand); color:var(--brand); background:#eff6ff; }
+
+/* Cards (from earlier, keep or tweak) */
+.cards { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+.card { display:block; background:#fff; color:var(--ink); text-decoration:none;
+  border:1px solid #e5e7eb; border-radius:12px; padding:1rem;
+  box-shadow:0 1px 2px rgba(0,0,0,.04); transition:.15s;
+}
+.card:hover{ border-color:#cbd5e1; box-shadow:0 4px 12px rgba(0,0,0,.06); transform:translateY(-1px); }
+.card h2{ margin:0 0 .25rem; font-size:1.125rem; }
+.card p{ margin:0; color:var(--muted); }
+
+.badge {
+  display:inline-block; margin-left:.5rem; font-size:.75rem; color:var(--muted);
+  border:1px solid #e5e7eb; border-radius:999px; padding:.1rem .5rem;
+}
+.muted { color:var(--muted); }
+
