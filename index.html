@@ -26,13 +26,16 @@
     `).join('');
   })();
   </script>
-  <div id="shared-footer"></div>
-  <script>
-  // Tell inject.js to skip the header but DO the footer
-  window.SUPPRESS_HEADER = true;
-  window.SUPPRESS_FOOTER = false; // (default is false, but explicit is nice)
+<div id="shared-footer"></div>
+
+<script>
+  window.SUPPRESS_HEADER = true;  // we only want the footer from inject.js
+  window.SUPPRESS_FOOTER = false;
 </script>
+
+<link rel="stylesheet" href="https://yhz.app/style.css">
 <script src="https://yhz.app/inject.js" defer></script>
 <script src="/site.js" defer></script>
+
 </body>
 ></html>
