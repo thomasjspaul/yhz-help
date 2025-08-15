@@ -5,40 +5,48 @@
 <link href="https://rsms.me/inter/inter.css" rel="stylesheet"/><link rel="stylesheet" href="/style.css"/>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head><body>
-<main class="page">
-  <article class="prose">
-    <h1 id="title">Loading…</h1>
-    <div id="content"></div>
-  </article>
-</main>
-<script>
-function parseFrontmatter(src){
-  if(src.startsWith('---')){
-    const end = src.indexOf('\n---', 3);
-    if(end !== -1){
-      const yaml = src.slice(3, end).trim();
-      const body = src.slice(end + 4).trim();
-      const meta = {};
-      yaml.split('\n').forEach(line=>{
-        const idx = line.indexOf(':');
-        if(idx>0){ meta[line.slice(0,idx).trim()] = line.slice(idx+1).trim(); }
-      });
-      return { meta, body };
+  <div id="shared-header"></div>
+
+  <main class="page">
+    <article class="prose">
+      <h1 id="title">Loading…</h1>
+      <div id="content"></div>
+    </article>
+  </main>
+
+  <div id="shared-footer"></div>
+
+  <script src="/site.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+  function parseFrontmatter(src){
+    if(src.startsWith('---')){
+      const end = src.indexOf('\n---', 3);
+      if(end !== -1){
+        const yaml = src.slice(3, end).trim();
+        const body = src.slice(end + 4).trim();
+        const meta = {};
+        yaml.split('\n').forEach(line=>{
+          const idx = line.indexOf(':');
+          if(idx>0){ meta[line.slice(0,idx).trim()] = line.slice(idx+1).trim(); }
+        });
+        return { meta, body };
+      }
     }
+    return { meta:{}, body:src };
   }
-  return { meta:{}, body:src };
-}
-(async () => {
-  const params = new URLSearchParams(location.search);
-  const slug = params.get('slug');
-  if(!slug){ location.href = '/'; return; }
-  const r = await fetch(`/content/help/${slug}.md`, { cache: 'no-store' });
-  if(!r.ok){ document.getElementById('title').textContent='Not found'; return; }
-  const text = await r.text();
-  const { meta, body } = parseFrontmatter(text);
-  document.title = `${(meta.title||'Article')} – YHZ Crew Alerts`;
-  document.getElementById('title').textContent = meta.title || slug;
-  document.getElementById('content').innerHTML = marked.parse(body);
-})();
-</script>
-</body></html>
+  (async () => {
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('slug');
+    if(!slug){ location.href = '/'; return; }
+    const r = await fetch(`/content/help/${slug}.md`, { cache: 'no-store' });
+    if(!r.ok){ document.getElementById('title').textContent='Not found'; return; }
+    const text = await r.text();
+    const { meta, body } = parseFrontmatter(text);
+    document.title = `${(meta.title||'Article')} – YHZ Crew Alerts`;
+    document.getElementById('title').textContent = meta.title || slug;
+    document.getElementById('content').innerHTML = marked.parse(body);
+  })();
+  </script>
+</body>
+</html>
