@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Help – YHZ Crew Alerts</title>
   <link rel="stylesheet" href="https://yhz.app/style.css" />
-  <link rel="stylesheet" href="/help.css?v=5" />
+  <link rel="stylesheet" href="/help.css?v=6" />
 </head>
 <body>
   <div id="shared-header"></div>
@@ -40,58 +40,60 @@
   <script src="/site.js" defer></script>
 
   <!-- search + categories -->
-  <script defer>
-    let ARTICLES = [];
-    const FILTER = { q: "", cat: "All" };
-    const listEl  = document.getElementById('list');
-    const chipsEl = document.getElementById('chips');
-    const qEl     = document.getElementById('q');
+<script defer>
+  let ARTICLES = [];
+  const FILTER = { q: "", cat: "All" };
 
-    function render() {
-      const q = FILTER.q.trim().toLowerCase();
-      const cat = FILTER.cat;
-      const filtered = ARTICLES.filter(a => {
-        const inCat = (cat === 'All') || (a.category === cat);
-        const hay   = (a.title + ' ' + (a.summary || '')).toLowerCase();
-        const inTxt = !q || hay.includes(q);
-        return inCat && inTxt;
-      });
-      listEl.innerHTML = filtered.length
-        ? filtered.map(a => `
-            <a class="card" href="/article.html?slug=${encodeURIComponent(a.slug)}">
-              <h2>${a.title} <span class="badge">${a.category}</span></h2>
-              <p>${a.summary ? a.summary : ''}</p>
-            </a>`).join('')
-        : `<p class="muted">No results. Try a different search or category.</p>`;
-    }
+  const listEl = document.getElementById('list');
+  const qEl    = document.getElementById('q');
+  const catEl  = document.getElementById('cat');
 
-    function buildChips(cats) {
-      const all = ['All', ...cats];
-      chipsEl.innerHTML = all.map(c =>
-        `<button class="chip${c === FILTER.cat ? ' active' : ''}" data-cat="${c}">${c}</button>`
-      ).join('');
-    }
+  function render() {
+    const q = FILTER.q.trim().toLowerCase();
+    const cat = FILTER.cat;
 
-    chipsEl.addEventListener('click', (e) => {
-      const btn = e.target.closest('.chip');
-      if (!btn) return;
-      FILTER.cat = btn.dataset.cat;
-      buildChips(getCategories());
-      render();
+    const filtered = ARTICLES.filter(a => {
+      const inCat = (cat === 'All') || (a.category === cat);
+      const hay   = (a.title + ' ' + (a.summary || '')).toLowerCase();
+      const inTxt = !q || hay.includes(q);
+      return inCat && inTxt;
     });
 
-    qEl.addEventListener('input', (e) => { FILTER.q = e.target.value || ''; render(); });
+    listEl.innerHTML = filtered.length
+      ? filtered.map(a => `
+          <a class="card" href="/article.html?slug=${encodeURIComponent(a.slug)}">
+            <h2>${a.title} <span class="badge">${a.category}</span></h2>
+            <p>${a.summary ? a.summary : ''}</p>
+          </a>
+        `).join('')
+      : `<p class="muted">No results. Try a different search or category.</p>`;
+  }
 
-    function getCategories() { return Array.from(new Set(ARTICLES.map(a => a.category || 'Other'))).sort(); }
+  function getCategories() {
+    return Array.from(new Set(ARTICLES.map(a => a.category || 'Other'))).sort();
+  }
 
-    (async () => {
-      const res = await fetch('/content/help/_index.json', { cache: 'no-store' });
-      const data = await res.json();
-      ARTICLES = (data.articles || []).map(a => ({ ...a, category: a.category || 'Other' }));
-      buildChips(getCategories());
-      render();
-    })();
-  </script>
+  function buildCategoryDropdown(cats) {
+    // Keep "All" first, then sorted categories
+    const opts = ['All', ...cats];
+    catEl.innerHTML = opts.map(c =>
+      `<option value="${c}">${c}</option>`
+    ).join('');
+    catEl.value = FILTER.cat;
+  }
+
+  qEl.addEventListener('input', (e) => { FILTER.q = e.target.value || ''; render(); });
+  catEl.addEventListener('change', (e) => { FILTER.cat = e.target.value; render(); });
+
+  (async () => {
+    const res = await fetch('/content/help/_index.json', { cache: 'no-store' });
+    const data = await res.json();
+    ARTICLES = (data.articles || []).map(a => ({ ...a, category: a.category || 'Other' }));
+    buildCategoryDropdown(getCategories());
+    render();
+  })();
+</script>
+
 </body>
 
 </html>
