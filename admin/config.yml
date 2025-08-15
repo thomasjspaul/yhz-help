@@ -2,7 +2,7 @@ backend:
   name: github
   repo: thomasjspaul/yhz-help
   branch: main
-  base_url: https://auth.help.yhc.app
+  base_url: https://auth.help.yhz.app
   auth_endpoint: /auth
   commit_messages:
     create: "docs(help): create {{slug}}"
