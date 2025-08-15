@@ -1,0 +1,8 @@
+:root { --ink:#0f172a; --muted:#6b7280; --card:#fff; --brand:#2563eb; }
+*{box-sizing:border-box} body{margin:0;color:var(--ink);background:#f9fafb;font-family:Inter,system-ui,sans-serif}
+.page{max-width:960px;margin:2rem auto;padding:0 1rem}
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.card{display:block;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1rem;text-decoration:none;color:inherit}
+.card:hover{border-color:#cbd5e1}
+.prose h1{margin:1rem 0 1.5rem}
+.prose p, .prose li{line-height:1.7}
