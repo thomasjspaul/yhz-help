@@ -1,8 +1,6 @@
 // /site.js
 document.addEventListener('DOMContentLoaded', () => {
-  // 👉 Set this to your main app domain (make BOTH lines match)
   const MAIN_APP_URL = 'https://yhz.app';
-  const MAIN          = MAIN_APP_URL;
 
   // HEADER: Help Home + Back to App
   const headerTarget = document.getElementById('shared-header');
@@ -17,24 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // FOOTER LINK FIXUPS:
-  // If your main inject.js inserts a footer with relative links (e.g., "/privacy"),
-  // rewrite them to point at the main site domain when viewed on help.yhz.app.
-  const relinkFooter = () => {
-    document.querySelectorAll('.yhz-footer a[href^="/"]').forEach(a => {
-      a.href = MAIN + a.getAttribute('href');
+  // Fix footer links inserted by main inject.js:
+  // - Convert href="/privacy" → "https://yhz.app/privacy"
+  // - Convert href="https://help.yhz.app/privacy" → "https://yhz.app/privacy"
+  function fixFooterLinks() {
+    const root = document.getElementById('shared-footer');
+    if (!root) return;
+
+    root.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+
+      if (href.startsWith('/')) {
+        a.href = MAIN_APP_URL + href; // make absolute to main site
+      } else if (href.startsWith('https://help.yhz.app/')) {
+        a.href = MAIN_APP_URL + href.replace('https://help.yhz.app', '');
+      }
     });
-  };
+  }
 
-  // Run now (in case footer is already present)…
-  relinkFooter();
+  // Run once now…
+  fixFooterLinks();
 
-  // …and run again when inject.js inserts the footer
-  const obs = new MutationObserver(() => {
-    if (document.querySelector('.yhz-footer')) {
-      relinkFooter();
-      obs.disconnect();
-    }
-  });
-  obs.observe(document.body, { childList: true, subtree: true });
+  // …and again whenever inject.js mutates the footer
+  const target = document.getElementById('shared-footer') || document.body;
+  const obs = new MutationObserver(() => fixFooterLinks());
+  obs.observe(target, { childList: true, subtree: true });
 });
