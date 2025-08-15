@@ -1,7 +1,7 @@
 // /site.js
 document.addEventListener('DOMContentLoaded', () => {
   // 👉 Set this to your main app domain
-  const MAIN_APP_URL = 'https://yhc.app'; // change to https://yhz.app if that’s your main domain
+  const MAIN_APP_URL = 'https://yhz.app'; // change to https://yhz.app if that’s your main domain
 
   // 👉 If your main-site paths differ, edit these slugs
   const ABOUT_URL   = `${MAIN_APP_URL}/about`;
