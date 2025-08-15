@@ -1,13 +1,18 @@
 // /site.js
 document.addEventListener('DOMContentLoaded', () => {
-  // ⬇️ Set this to your main app URL
-  const MAIN_APP_URL = 'https://yhz.app'; // change to https://yhc.app if that's your main domain
+  // 👉 Set this to your main app domain
+  const MAIN_APP_URL = 'https://yhc.app'; // change to https://yhz.app if that’s your main domain
+
+  // 👉 If your main-site paths differ, edit these slugs
+  const ABOUT_URL   = `${MAIN_APP_URL}/about`;
+  const PRIV_URL    = `${MAIN_APP_URL}/privacy`;
+  const TERMS_URL   = `${MAIN_APP_URL}/terms`;
 
   const navLinks = [
-    { href: '/', label: 'Help Home' },
-    { href: '/about.html', label: 'About' },
-    { href: '/privacy.html', label: 'Privacy' },
-    { href: '/terms.html', label: 'Terms' },
+    { href: '/', label: 'Help Home', internal: true },
+    { href: ABOUT_URL,  label: 'About',   internal: false },
+    { href: PRIV_URL,   label: 'Privacy', internal: false },
+    { href: TERMS_URL,  label: 'Terms',   internal: false },
   ];
 
   // HEADER
@@ -18,18 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav class="yhz-nav">
           <a class="brand" href="/">YHZ Crew Alerts Help</a>
           <div class="links">
-            ${navLinks.map(l => `<a class="nav-link" href="${l.href}">${l.label}</a>`).join('')}
+            ${navLinks.map(l => `
+              <a class="nav-link" href="${l.href}" ${l.internal ? '' : 'target="_self" rel="noopener"'}>${l.label}</a>
+            `).join('')}
           </div>
           <a class="button" href="${MAIN_APP_URL}">← Back to App</a>
         </nav>
       </header>
     `;
 
-    // Highlight active link
+    // Highlight only the internal "Help Home" link when on the help site
     const path = location.pathname.replace(/index\.html$/,'') || '/';
     headerTarget.querySelectorAll('.nav-link').forEach(a => {
       const href = a.getAttribute('href');
-      if (href === path) a.classList.add('active');
+      if (href === path && href.startsWith('/')) a.classList.add('active');
     });
   }
 
