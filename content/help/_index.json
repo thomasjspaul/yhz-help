@@ -1,16 +1,3 @@
 {
-  "articles": [
-    {
-      "title": "Getting Started",
-      "slug": "getting-started",
-      "summary": "Create an account, verify, and set your alert preferences.",
-      "category": "Getting Started"
-    },
-    {
-      "title": "Setting Alert Preferences",
-      "slug": "setting-alert-preferences",
-      "summary": "How real-time alerts differ from the daily summary, and how to choose where you get them.",
-      "category": "Alerts"
-    }
-  ]
+  "articles": []
 }
