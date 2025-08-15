@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Help – YHZ Crew Alerts</title>
+<link href="https://rsms.me/inter/inter.css" rel="stylesheet"/><link rel="stylesheet" href="/style.css"/>
+</head><body>
+<main class="page">
+  <h1>Help Center</h1>
+  <p>Guides and answers for YHZ Crew Alerts.</p>
+  <div id="list" class="cards"></div>
+</main>
+<script>
+(async () => {
+  const res = await fetch('/content/help/_index.json', { cache: 'no-store' });
+  const data = await res.json();
+  const list = document.getElementById('list');
+  list.innerHTML = (data.articles || []).map(a => `
+    <a class="card" href="/article.html?slug=${encodeURIComponent(a.slug)}">
+      <h2>${a.title}</h2>
+      <p>${a.summary ? a.summary : ''}</p>
+    </a>
+  `).join('');
+})();
+</script>
+</body></html>
