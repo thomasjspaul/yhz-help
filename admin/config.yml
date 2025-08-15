@@ -15,7 +15,6 @@ public_folder: "/assets/uploads"
 collections:
   - name: "help"
     label: "Help"
-    label_singular: "Article"
     folder: "content/help"
     create: true
     format: "frontmatter"
@@ -24,8 +23,9 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "lowercase-with-dashes" }
+      - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Getting Started","Account","Alerts","Troubleshooting","Policies","Other"], default: "Getting Started" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "manifest"
@@ -43,3 +43,5 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Slug", name: "slug", widget: "string" }
               - { label: "Summary", name: "summary", widget: "text", required: false }
+              - { label: "Category", name: "category", widget: "select", options: ["Getting Started","Account","Alerts","Troubleshooting","Policies","Other"], default: "Getting Started" }
+
