@@ -1,0 +1,34 @@
+/* Local styles for Help header buttons (no full-width on mobile) */
+:root {
+  --ink:#0f172a; --brand:#2563eb; --brand-hover:#1d4ed8; --ring:rgba(37,99,235,.25);
+}
+
+.yhz-header { margin: 1rem 0 2rem; }
+.yhz-nav {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1rem; background:#fff; border:1px solid #e5e7eb; border-radius:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+
+.yhz-nav .btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.5rem .9rem; border-radius:.6rem;
+  border:1px solid var(--brand,#2563eb);
+  background:var(--brand,#2563eb);
+  color:#fff; font-weight:600; line-height:1.2; text-decoration:none;
+  transition:transform .02s ease, background .15s ease, border-color .15s ease;
+}
+.yhz-nav .btn:hover { background:var(--brand-hover,#1d4ed8); border-color:var(--brand-hover,#1d4ed8); }
+.yhz-nav .btn:active { transform: translateY(1px); }
+.yhz-nav .btn:focus-visible { outline:none; box-shadow:0 0 0 3px var(--ring,rgba(37,99,235,.25)); }
+
+.yhz-nav .btn-ghost {
+  background:#fff; color:var(--ink,#0f172a); border-color:#e5e7eb;
+}
+.yhz-nav .btn-ghost:hover { background:#f8fafc; border-color:#cbd5e1; }
+
+/* Do NOT stretch on mobile */
+@media (max-width:640px){
+  .yhz-nav { flex-wrap:wrap; gap:.5rem; }
+  .yhz-nav .btn, .yhz-nav .btn-ghost { width:auto; flex:0 0 auto; }
+}
