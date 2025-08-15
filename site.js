@@ -13,16 +13,4 @@ document.addEventListener('DOMContentLoaded', () => {
         </nav>
       </header>
     `;
-  }
-
-  const footerTarget = document.getElementById('shared-footer');
-  if (footerTarget) {
-    footerTarget.innerHTML = `
-      <footer class="yhz-footer">
-        <div class="page">
-          <small>© ${new Date().getFullYear()} YHZ Crew Alerts</small>
-        </div>
-      </footer>
-    `;
-  }
 });
