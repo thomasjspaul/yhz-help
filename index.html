@@ -11,39 +11,84 @@
 <body>
   <div id="shared-header"></div>
 
-  <main class="page">
-    <h1>YHZ Crew Alerts Help Center</h1>
-    <p>Guides and answers for YHZ Crew Alerts.</p>
-    <div id="list" class="cards"></div>
-  </main>
+<main class="page">
+  <h1>Help Center</h1>
+  <p>Guides and answers for YHZ Crew Alerts.</p>
 
-  <!-- Single footer container -->
-  <div id="shared-footer"></div>
+  <div class="toolbar">
+    <div class="search">
+      <input id="q" type="search" placeholder="Search help…" aria-label="Search help" />
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
 
-  <!-- Tell main inject to skip header but include footer -->
-  <script>
-    window.SUPPRESS_HEADER = true;
-    window.SUPPRESS_FOOTER = false;
-  </script>
+  <div id="list" class="cards"></div>
+</main>
 
-  <!-- Load shared footer, then this site’s header/buttons + footer link fixer -->
-  <script src="https://yhz.app/inject.js" defer></script>
-  <script src="/site.js" defer></script>
+<script defer>
+  let ARTICLES = [];
+  const FILTER = { q: "", cat: "All" };
+  const listEl  = document.getElementById('list');
+  const chipsEl = document.getElementById('chips');
+  const qEl     = document.getElementById('q');
 
-  <!-- Populate help list -->
-  <script defer>
-    (async () => {
-      const res = await fetch('/content/help/_index.json', { cache: 'no-store' });
-      const data = await res.json();
-      const list = document.getElementById('list');
-      list.innerHTML = (data.articles || []).map(a => `
-        <a class="card" href="/article.html?slug=${encodeURIComponent(a.slug)}">
-          <h2>${a.title}</h2>
-          <p>${a.summary ? a.summary : ''}</p>
-        </a>
-      `).join('');
-    })();
-  </script>
+  function render() {
+    const q = FILTER.q.trim().toLowerCase();
+    const cat = FILTER.cat;
+
+    const filtered = ARTICLES.filter(a => {
+      const inCat = (cat === 'All') || (a.category === cat);
+      const hay   = (a.title + ' ' + (a.summary || '')).toLowerCase();
+      const inTxt = !q || hay.includes(q);
+      return inCat && inTxt;
+    });
+
+    listEl.innerHTML = filtered.length
+      ? filtered.map(a => `
+          <a class="card" href="/article.html?slug=${encodeURIComponent(a.slug)}">
+            <h2>${a.title} <span class="badge">${a.category}</span></h2>
+            <p>${a.summary ? a.summary : ''}</p>
+          </a>
+        `).join('')
+      : `<p class="muted">No results. Try a different search or category.</p>`;
+  }
+
+  function buildChips(cats) {
+    const all = ['All', ...cats];
+    chipsEl.innerHTML = all.map(c =>
+      `<button class="chip${c === FILTER.cat ? ' active' : ''}" data-cat="${c}">${c}</button>`
+    ).join('');
+  }
+
+  chipsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    FILTER.cat = btn.dataset.cat;
+    buildChips(getCategories());
+    render();
+  });
+
+  qEl.addEventListener('input', (e) => {
+    FILTER.q = e.target.value || '';
+    render();
+  });
+
+  function getCategories() {
+    return Array.from(new Set(ARTICLES.map(a => a.category || 'Other'))).sort();
+  }
+
+  (async () => {
+    const res = await fetch('/content/help/_index.json', { cache: 'no-store' });
+    const data = await res.json();
+    ARTICLES = (data.articles || []).map(a => ({
+      ...a,
+      category: a.category || 'Other'
+    }));
+    buildChips(getCategories());
+    render();
+  })();
+</script>
+
 </body>
 </html>
 
