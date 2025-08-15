@@ -5,6 +5,12 @@
       "title": "Creating an Account with Email and Password",
       "slug": "create-account-email",
       "summary": "Step-by-step guide to creating your YHZ Crew Alerts account using an email address and password."
+    },
+    {
+      "category": "Getting Started",
+      "title": "Creating an Account with Google",
+      "slug": "create-account-google",
+      "summary": "Step-by-step guide to creating your YHZ Crew Alerts account using Google Sign-In."
     }
   ]
 }
