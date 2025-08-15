@@ -1,7 +1,7 @@
 // /site.js
 document.addEventListener('DOMContentLoaded', () => {
   // 👉 Set this to your main app domain (make BOTH lines match)
-  const MAIN_APP_URL = 'https://yhc.app'; // e.g., https://yhc.app or https://yhz.app
+  const MAIN_APP_URL = 'https://yhz.app';
   const MAIN          = MAIN_APP_URL;
 
   // HEADER: Help Home + Back to App
