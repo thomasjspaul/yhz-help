@@ -6,20 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerTarget = document.getElementById('shared-header');
   if (headerTarget) {
     headerTarget.innerHTML = `
-// inside site.js where you set headerTarget.innerHTML = `
-<header class="yhz-header">
-  <nav class="yhz-nav">
-    <a class="btn btn-ghost" href="/">Help Home</a>
-    <a class="btn" href="${MAIN_APP_URL}">← Back to App</a>
-  </nav>
-</header>
-`
+      <header class="yhz-header">
+        <nav class="yhz-nav">
+          <a class="btn btn-ghost" href="/">Help Home</a>
+          <a class="btn" href="${MAIN_APP_URL}">← Back to App</a>
+        </nav>
+      </header>
     `;
   }
 
   // Fix footer links inserted by main inject.js:
-  // - Convert href="/privacy" → "https://yhz.app/privacy"
-  // - Convert href="https://help.yhz.app/privacy" → "https://yhz.app/privacy"
+  // - "/privacy" → "https://yhz.app/privacy"
+  // - "https://help.yhz.app/privacy" → "https://yhz.app/privacy"
   function fixFooterLinks() {
     const root = document.getElementById('shared-footer');
     if (!root) return;
