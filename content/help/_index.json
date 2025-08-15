@@ -2,9 +2,9 @@
   "articles": [
     {
       "category": "Getting Started",
-      "title": "How to Create an Account",
-      "slug": "create-account",
-      "summary": "Step-by-step guide to creating your YHZ Crew Alerts account, including signing up with Google or using your WestJet crew email."
+      "title": "Creating an Account with Email and Password",
+      "slug": "create-account-email",
+      "summary": "Step-by-step guide to creating your YHZ Crew Alerts account using an email address and password."
     }
   ]
 }
