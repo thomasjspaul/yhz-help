@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <nav class="yhz-nav" id="yhz-nav" aria-label="Primary">
               <div class="yhz-left">
                 <a href="/" class="yhz-brand">
-                  <img src="/logos/icons/mstile-150x150.png" alt="" aria-hidden="true">
+                  <img src="https://yhz.app/logos/icons/mstile-150x150.png" alt="" aria-hidden="true">
                   <span>YHZ Crew Alerts</span>
                 </a>
               </div>
               <div class="yhz-spacer"></div>
               <div class="yhz-menu" id="yhz-menu" role="menubar" aria-label="Primary">
-                <a href="/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
-                <a href="/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
-                <a href="/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
+                <a href="https://yhz.app/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
+                <a href="https://yhz.app/dashboard/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
+                <a href="https://yhz.app/dashboard/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
 				<a href="https://help.yhz.app"   class="yhz-link nav-link" role="menuitem">Help</a>
-                <a href="/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
+                <a href="https://yhz.app/dashboard/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
               </div>
               <button class="yhz-toggle" id="yhz-toggle" aria-controls="yhz-mobile-panel" aria-expanded="false" aria-label="Open menu">
                 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="yhz-mobile" id="yhz-mobile">
               <div class="yhz-backdrop" id="yhz-backdrop"></div>
               <div class="yhz-panel" id="yhz-mobile-panel" role="menu" aria-label="Primary mobile">
-                <a href="/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
-                <a href="/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
-                <a href="/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
+                <a href="https://yhz.app/dashboard/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
+                <a href="https://yhz.app/dashboard/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
+                <a href="https://yhz.app/dashboard/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
 				<a href="https://help.yhz.app"   class="yhz-link nav-link" role="menuitem">Help</a>
-                <a href="/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
+                <a href="https://yhz.app/dashboard/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
               </div>
             </div>
           </header>
