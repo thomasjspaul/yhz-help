@@ -6,40 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerTarget = document.getElementById('shared-header');
   if (headerTarget) {
     headerTarget.innerHTML = `
-          <header class="yhz-header-wrap">
-            <nav class="yhz-nav" id="yhz-nav" aria-label="Primary">
-              <div class="yhz-left">
-                <a href="https://yhz.app/" class="yhz-brand">
-                  <img src="https://yhz.app/logos/icons/mstile-150x150.png" alt="" aria-hidden="true">
-                  <span>YHZ Crew Alerts</span>
-                </a>
-              </div>
-              <div class="yhz-spacer"></div>
-              <div class="yhz-menu" id="yhz-menu" role="menubar" aria-label="Primary">
-                <a href="https://yhz.app/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
-                <a href="https://yhz.app/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
-                <a href="https://yhz.app/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
-				<a href="https://help.yhz.app"   class="yhz-link nav-link" role="menuitem">Help</a>
-                <a href="https://yhz.app/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
-              </div>
-              <button class="yhz-toggle" id="yhz-toggle" aria-controls="yhz-mobile-panel" aria-expanded="false" aria-label="Open menu">
-                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 6h18M3 12h18M3 18h18" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </nav>
-
-            <!-- Mobile panel + backdrop (outside nav for overlay stacking) -->
-            <div class="yhz-mobile" id="yhz-mobile">
-              <div class="yhz-backdrop" id="yhz-backdrop"></div>
-              <div class="yhz-panel" id="yhz-mobile-panel" role="menu" aria-label="Primary mobile">
-                <a href="https://yhz.app/dashboard"  class="yhz-link nav-link" role="menuitem">Dashboard</a>
-                <a href="https://yhz.app/myrequests" class="yhz-link nav-link" role="menuitem">My Requests</a>
-                <a href="https://yhz.app/requests"   class="yhz-link nav-link" role="menuitem">Requests</a>
-				<a href="https://help.yhz.app"   class="yhz-link nav-link" role="menuitem">Help</a>
-                <a href="https://yhz.app/logout"     class="yhz-link nav-link" role="menuitem">Log Out</a>
-              </div>
-            </div>
+          <header>
           </header>
     `;
   }
