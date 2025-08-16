@@ -29,7 +29,7 @@ You can begin verification by:
 ## Verification Methods
 You have two options:
 
-### 1 — Send an Email from Your Work or ALPA Email
+### 1 — Send an Email from Your Work Email
 Send an email to **help@yhz.app** stating you wish to activate your account.  
 Once confirmed, we’ll update your account to **verified**.
 
