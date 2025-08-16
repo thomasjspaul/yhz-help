@@ -125,3 +125,24 @@
   .yhz-menu { display:none; }
   .yhz-toggle { display:inline-flex; align-items:center; justify-content:center; }
 }
+/* --- Mobile menu hard overrides for help.yhz.app --- */
+.yhz-mobile { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+
+.yhz-mobile .yhz-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.35);
+  opacity: 0; transition: opacity .2s ease;
+}
+
+.yhz-mobile .yhz-panel {
+  position: fixed; top: 0; right: 0; height: 100%;
+  width: 280px; max-width: 85vw;
+  background: #fff; border-left: 1px solid #e5e7eb;
+  transform: translateX(100%) !important;   /* default: off-screen */
+  transition: transform .2s ease;
+  display: flex; flex-direction: column; padding: 1rem;
+}
+
+.yhz-mobile.open { pointer-events: auto; }
+.yhz-mobile.open .yhz-backdrop { opacity: 1 !important; }
+.yhz-mobile.open .yhz-panel { transform: translateX(0) !important; }
