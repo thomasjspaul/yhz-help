@@ -11,6 +11,12 @@
       "title": "Creating an Account with Google",
       "slug": "create-account-google",
       "summary": "Step-by-step guide to creating your YHZ Crew Alerts account using Google Sign-In."
+    },
+    {
+      "category": "Getting Started",
+      "title": "Verifying Your Account",
+      "slug": "verify-account",
+      "summary": "Why verification is required for YHZ Crew Alerts and how to complete it."
     }
   ]
 }
