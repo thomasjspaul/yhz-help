@@ -30,7 +30,7 @@ You can begin verification by:
 You have two options:
 
 ### 1 — Send an Email from Your Work Email
-Send an email to **help@yhz.app** stating you wish to activate your account.  
+Send an email to **helo@yhz.app** stating you wish to activate your account.  
 Once confirmed, we’ll update your account to **verified**.
 
 
@@ -39,7 +39,7 @@ Once confirmed, we’ll update your account to **verified**.
 1. On the verification page, select your airline.  
 2. Enter your **work email address**.  
 3. A single-use code will be sent to your work email (check your **Inbox** and **Spam/Junk** folders).  
-   - The email will come from **help@yhz.app**.  
+   - The email will come from **helo@yhz.app**.  
 4. Enter the code into the verification box and click **Activate**.  
 5. Your account will be verified instantly, and your work email will be **deleted from our system**.
 
