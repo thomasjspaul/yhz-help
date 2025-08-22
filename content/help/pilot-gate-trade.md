@@ -6,9 +6,9 @@ summary: This article explains the rules and process for Pilot-to-Pilot Gate
   and where to get additional support.
 category: Flica & Trading
 ---
-# Pilot-to-Pilot Gate Trades
+**Disclaimer:** This guide is meant to help pilots understand the basics of gate trading. It does **not** replace a pilot’s responsibility to read and understand the contract and applicable policies.
 
-> **Disclaimer:** This guide is meant to help pilots understand the basics of gate trading. It does **not** replace a pilot’s responsibility to read and understand the contract and applicable policies.
+>
 
 ### Contract Reference
 
