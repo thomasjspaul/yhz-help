@@ -1,6 +1,9 @@
 ---
 title: How to Drop a Leg(s) to Another Pilot in Flica
 slug: drop-leg-flica
+summary: This article explains how pilots can use Flica to drop one or more legs
+  of a pairing directly to another pilot, including where to find the option in
+  the menu, how to split a pairing, and how to submit the request.
 category: Flica & Trading
 ---
 > **Disclaimer:** This guide is provided to help pilots navigate the Flica system. It does **not** replace a pilot’s responsibility to read and understand the contract and applicable company/union policies.
