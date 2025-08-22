@@ -43,5 +43,5 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Slug", name: "slug", widget: "string" }
               - { label: "Summary", name: "summary", widget: "text", required: false }
-              - { label: "Category", name: "category", widget: "select", options: ["Getting Started","Account","Alerts","Troubleshooting","Policies","Other"], default: "Getting Started" }
+              - { label: "Category", name: "category", widget: "select", options: ["Getting Started","Account","Alerts","Troubleshooting","Policies", "Flica & Trading", "Other"], default: "Getting Started" }
 
